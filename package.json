@@ -1,53 +1,38 @@
 {
-  "name": "vue-markdown-x",
+  "name": "@libeilong/vue-markdown-x",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "private": false,
-  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
-  "description": "The vue component for render Markdown string.",
-  "author": "litingyes <luz.liting@gmail.com> (https://litingyes.top/)",
+  "description": "A Vue 3 component for rendering Markdown",
+  "author": "lblblong",
   "license": "MIT",
-  "homepage": "https://vue-markdown-x.vercel.app/",
-  "bugs": {
-    "url": "https://github.com/litingyes/vue-markdown/issues"
+  "repository": "https://github.com/lblblong/vue-markdown",
+  "main": "src/index.ts",
+  "publishConfig": {
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
+      },
+      "./index.css": "./dist/index.css"
+    }
   },
-  "keywords": [
-    "vue",
-    "markdown",
-    "stream",
-    "ai",
-    "mdast",
-    "unified"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./index.css": "./dist/index.css"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
-    "./playground/public/logo.svg",
     "dist"
   ],
   "scripts": {
     "dev": "cd playground && pnpm dev",
-    "lint": "eslint .",
-    "format": "eslint --fix .",
     "build": "vite build",
-    "commit": "git-cz",
-    "prerelease": "pnpm build",
-    "release": "bumpp",
-    "prepare": "husky"
+    "prepublishOnly": "vite build"
   },
   "peerDependencies": {
     "vue": "3"
   },
   "dependencies": {
-    "@vueuse/core": "^13.0.0",
+    "@libeilong/h5": "^0.17.0",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-vnode": "^0.3.2",
@@ -56,40 +41,20 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@commitlint/cz-commitlint": "^19.6.1",
     "@types/node": "22",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.2.0",
     "bumpp": "^9.10.2",
-    "commitizen": "^4.3.1",
-    "eslint": "^9.18.0",
-    "eslint-plugin-format": "^1.0.1",
-    "husky": "^9.1.7",
     "inquirer": "^12.3.3",
-    "lint-staged": "^15.4.3",
     "sass-embedded": "^1.85.1",
     "typescript": "^5.7.3",
     "unplugin-external": "0.1.0-beta.3",
     "vite": "^6.1.1",
     "vite-plugin-dts": "^4.5.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
     ]
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
   }
 }

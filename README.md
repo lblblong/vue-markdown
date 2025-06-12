@@ -1,3 +1,5 @@
+Fork 自用版，原项目：https://github.com/litingyes/vue-markdown
+
 # ![Logo](./playground/public/logo.svg) Vue Markdown
 
 The vue component for render Markdown string

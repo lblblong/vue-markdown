@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { VUE_MARKDOWN_CONTEXT } from '../VueMarkdown.vue'
-import { useClipboard, useElementHover } from '@vueuse/core'
+import { useElementHover } from '../hooks/useElementHover'
+import { copyToClipboard } from '@libeilong/h5'
 import { computed, inject, ref } from 'vue'
 import IconCopied from '../icons/copied.vue'
 import IconCopy from '../icons/copy.vue'
 import { VUE_MARKDOWN_CONTEXT_KEY } from '../utils'
+import type { VUE_MARKDOWN_CONTEXT } from '../VueMarkdown'
 
 defineOptions({
   name: 'VueMarkdownCodeBlock',
@@ -36,10 +37,14 @@ const htmlStr = computed(() => {
 
 const containerRef = ref<HTMLDivElement>()
 const isHover = useElementHover(containerRef)
+const copied = ref(false)
 
-const { copy, copied } = useClipboard({
-  source: props.value,
-})
+async function copy(value: string) {
+  await copyToClipboard(value)
+  copied.value = true
+}
+
+
 </script>
 
 <template>
